@@ -23,7 +23,7 @@ app.use(express.urlencoded());
 app.use('/api/data', route_data);
 
 
-const uri = "mongodb+srv://fleetAdmin:ZZpro@981@cluster0.rvujb.mongodb.net/camDb?retryWrites=true&w=majority";
+const uri = "mongodb+srv://fleetAdmin:ZZpro%40981@cluster0.rvujb.mongodb.net/camDb?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true });
 
 //on connection
