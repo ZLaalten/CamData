@@ -35,8 +35,9 @@ client.on('connect', function () {
     // message is Buffer
     datas = message.toString()
     // client.end()
-    console.log(datas);
+    // console.log(datas);
     datas = JSON.parse(datas);
+    console.log(datas);
     async.each(datas, function (data, callback) {
         let newData = new Data(data);
         newData.save((err, data)=>{
