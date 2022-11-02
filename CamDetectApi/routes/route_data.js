@@ -6,8 +6,9 @@ const async = require('async');
 const mqtt = require('mqtt');
 const clientId = "binaryScript";
 
+const server_address = "mqtt://localhost"
 
-const client  = mqtt.connect('mqtt://localhost',{
+const client  = mqtt.connect(server_address,{
     clientId,
     will : {
         topic : clientId,
@@ -65,6 +66,17 @@ router.get('/get_all', (req, res, next)=>{
         res.json(datas);
     })
 });
+
+
+//topic publisher
+router.post('/publish_topic',(req, res, next)=>{
+    let topic = req.body.topic;
+    let message = req.body.message;
+    client.publish(topic, message);
+    res.json("Successfully Published");
+    
+})
+
 
 //adding datas
 router.post('/',(req, res, next)=>{
