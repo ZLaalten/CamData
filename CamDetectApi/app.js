@@ -16,7 +16,7 @@ const port = 3000;
 
 //adding middleware cors and bodyparser
 app.use(cors());
-app.use(bodyparser.json()); 
+app.use(bodyparser.json());
 app.use(express.urlencoded());
 
 //routes
@@ -33,7 +33,7 @@ mongoose.connection.on('connected', () => {
 
 //on error 
 mongoose.connection.on('error', (err) => {
-    if(err){
+    if (err) {
         console.log('Error occured while connecting to mongodb' + err);
     }
 });
@@ -43,13 +43,18 @@ app.get('/', (req, res) => {
     res.send('foobar');
 })
 
+app.get("/images", (req, res) => {
+    var image_name = req.param('image_name');
+    res.sendFile(path.join(__dirname, "./uploads/" + image_name));
+});
+
 
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', (req, res)=>{
-    res.send("Server up and running"); 
-})
-.listen(process.env.PORT || 3000)
+app.get('/', (req, res) => {
+        res.send("Server up and running");
+    })
+    .listen(process.env.PORT || 3000)
