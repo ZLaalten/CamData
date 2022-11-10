@@ -149,8 +149,8 @@ router.post("/publish_message", (req, res) => {
     speakerText.audioConfig.speakingRate = 1;
 
     speakerText.input.text = text_message;
-    speakerText.voice.languageCode = "en-US"
-    speakerText.voice.name = "en-US-Wavenet-D"
+    speakerText.voice.languageCode = "hi-IN"
+    speakerText.voice.name = "hi-IN-Wavenet-D"
     console.log(JSON.stringify(speakerText, null, '\t'));
 
     var options = {
