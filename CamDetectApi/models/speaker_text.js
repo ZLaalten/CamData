@@ -16,6 +16,16 @@ const SpeakerTextSchema = mongoose.Schema({
         speakingRate: {
             type: String,
             required: true
+        },
+
+        sampleRateHertz: {
+            type: String,
+            required: true
+        },
+
+        volumeGainDb: {
+            type: String,
+            required: true
         }
     },
 

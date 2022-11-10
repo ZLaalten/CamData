@@ -147,6 +147,8 @@ router.post("/publish_message", (req, res) => {
     speakerText.audioConfig.audioEncoding = "MP3";
     speakerText.audioConfig.pitch = 0;
     speakerText.audioConfig.speakingRate = 1;
+    speakerText.audioConfig.sampleRateHertz = 16000;
+    speakerText.audioConfig.volumeGainDb = 16;
 
     speakerText.input.text = text_message;
     speakerText.voice.languageCode = "hi-IN"
