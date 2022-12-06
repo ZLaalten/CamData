@@ -4,7 +4,7 @@ const moment = require('moment');
 const router = express.Router();
 const async = require('async');
 const mqtt = require('mqtt');
-const clientId = "binaryScripts";
+const clientId = "binaryScripts_1";
 var request = require('request');
 var fs = require("fs");
 
@@ -70,6 +70,22 @@ router.get('/get_all', (req, res, next) => {
     Data.find((err, datas) => {
         res.json(datas);
     })
+});
+
+router.get('/get_device_by_id', (req, res, next) => {
+
+    var device_in_params = req.param('device_id');
+
+
+    Data.find({ camera_id: device_in_params }, function(erer, data) {
+        if (erer) {
+            res.status(403).json({ msg: 'Error in fetching user data', data: data, status: 'failure' });
+        } else {
+            res.json(data);
+        }
+    })
+
+
 });
 
 
