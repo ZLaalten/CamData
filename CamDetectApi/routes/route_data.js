@@ -13,7 +13,7 @@ const speaker_data = require('../models/speaker_data.js');
 
 
 const serverUrl = "http://192.168.1.67:3000";
-const server_address = "mqtt://13.233.63.39"
+const server_address = "mqtt://35.223.199.25"
 const mqtt_topic = "speaker_01";
 
 const client = mqtt.connect(server_address, {
