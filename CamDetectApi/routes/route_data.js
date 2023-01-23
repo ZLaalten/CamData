@@ -10,6 +10,7 @@ var fs = require("fs");
 
 const speaker_text = require('../models/speaker_text.js');
 const speaker_data = require('../models/speaker_data.js');
+const AttendanceData = require('../models/data attend');
 
 
 const serverUrl = "http://192.168.1.67:3000";
@@ -131,6 +132,25 @@ router.post('/post_all', (req, res, next) => {
             res.json({ msg: 'Successfully posted', data: req.body, status: 'success' });
         }
     });
+});
+
+
+router.post('/post_attendance', (req, res, next) => {
+    let datas = req.body;
+    let newData = new AttendanceData(datas);
+    newData.save((err, data) => {
+        if (err) {
+            res.json({ msg: 'Error posted', data: req.body, status: 'error' });
+        } else {
+            res.json({ msg: 'Successfully posted', data: req.body, status: 'success' });
+        }
+    })
+});
+
+router.get('/get_all_attendance', (req, res, next) => {
+    AttendanceData.find((err, datas) => {
+        res.json(datas);
+    })
 });
 
 //deleting datas
